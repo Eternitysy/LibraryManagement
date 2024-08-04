@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.CategoryMapper">
+    
+    <resultMap id="categoryMap" type="com.example.springboot.entity.Category">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
+        <result column="pid" property="pid"/>
+        <result column="createtime" property="createtime"/>
+        <result column="updatetime" property="updatetime"/>
+        <collection property="children" column="id" ofType="com.example.springboot.entity.Category" select="selectByPid"/>
+    </resultMap>
+    <select id="selectByPid" resultType="com.example.springboot.entity.Category">
+        select * from category where pid=#{pid} order by id desc
+    </select>
+    <insert id="save">
+        insert into category(name,remark,pid)
+        values (#{name},#{remark},#{pid})
+    </insert>
+    <update id="update">
+        update category
+        set name=#{name},remark=#{remark},updatetime=#{updatetime}
+        where id =#{id}
+    </update>
+    <delete id="delete">
+        delete from category
+        where id=#{id}
+    </delete>
+    <select id="list" resultType="com.example.springboot.entity.Category">
+        select * from category order by id desc
+    </select>
+    <select id="listByConditions" resultMap="categoryMap">
+        select c1.* from category c1
+        left join category c2
+        on c1.id=c2.pid
+        <where>
+            isnull(c1.pid)
+            <if test="name != null and name !=''">
+                and (c1.name like concat('%',#{ name },'%') or c2.name like concat('%',#{ name },'%'))
+            </if>
+
+        </where>
+        group by c1.id
+        order by id desc
+    </select>
+    <select id="getById" resultType="com.example.springboot.entity.Category">
+        select *
+        from category
+        where id=#{id}
+    </select>
+
+</mapper>

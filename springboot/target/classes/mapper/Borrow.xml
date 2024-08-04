@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.BorrowMapper">
+    <insert id="save">
+        insert into borrow(bookName,bookNo,userId,userName,userPhone,score,days,returnDate)
+        values (#{bookName},#{bookNo},#{userId},#{userName},#{userPhone},#{score},#{days},#{returnDate})
+    </insert>
+    <update id="update">
+        update borrow
+        set bookName=#{bookName},bookNo=#{bookNo},userId=#{userId},userName=#{userName},userPhone=#{userPhone},score=#{score},updatetime=#{updatetime},status=#{status},days=#{days},returnDate=#{returnDate}
+        where id =#{id}
+    </update>
+    <delete id="delete">
+        delete from borrow
+        where id=#{id}
+    </delete>
+
+    <select id="list" resultType="com.example.springboot.entity.Borrow">
+        select * from borrow order by id desc
+    </select>
+    <select id="listByConditions" resultType="com.example.springboot.entity.Borrow">
+        select * from borrow
+        <where>
+            <if test="bookName != null and bookName !=''">
+                bookName like concat('%',#{ bookName },'%')
+            </if>
+            <if test="bookNo != null and bookNo !=''">
+                bookNo like concat('%',#{ bookNo },'%')
+            </if>
+            <if test="userName != null and userName !=''">
+                userName like concat('%',#{ userName },'%')
+            </if>
+
+        </where>
+        order by id desc
+    </select>
+    <select id="getById" resultType="com.example.springboot.entity.Borrow">
+        select *
+        from borrow
+        where id=#{id}
+    </select>
+    <select id="listReturnsByConditions" resultType="com.example.springboot.entity.Returns">
+        select * from returns
+        <where>
+            <if test="bookName != null and bookName !=''">
+                bookName like concat('%',#{ bookName },'%')
+            </if>
+            <if test="bookNo != null and bookNo !=''">
+                bookNo like concat('%',#{ bookNo },'%')
+            </if>
+            <if test="userName != null and userName !=''">
+                userName like concat('%',#{ userName },'%')
+            </if>
+
+        </where>
+        order by id desc
+    </select>
+    <select id="getCountByTimeRange" resultType="com.example.springboot.mapper.po.BorrowReturnsCountPO">
+        select count(id) as count,DATE_FORMAT(createtime,'%Y-%m-%d') as date from
+        <if test="type == 1">
+            borrow
+        </if>
+        <if test="type == 2">
+            returns
+        </if>
+        where
+            <choose>
+                <when test="timeRange == 'week'">
+                    createtime >= DATE_SUB(NOW(),INTERVAL 1 WEEK)
+                </when>
+                <when test="timeRange == 'month'">
+                    createtime >= DATE_SUB(NOW(),INTERVAL 1 MONTH)
+                </when>
+                <when test="timeRange == 'month2'">
+                    createtime >= DATE_SUB(NOW(),INTERVAL 2 MONTH)
+                </when>
+                <when test="timeRange == 'month3'">
+                    createtime >= DATE_SUB(NOW(),INTERVAL 3 MONTH)
+                </when>
+                <otherwise>
+                    createtime > now()
+                </otherwise>
+            </choose>
+        group by date
+    </select>
+    <insert id="saveReturns">
+        insert into returns(bookName,bookNo,userId,userName,userPhone,score,days,returnDate,realDate,status)
+        values (#{bookName},#{bookNo},#{userId},#{userName},#{userPhone},#{score},#{days},#{returnDate},#{realDate},#{status})
+    </insert>
+    <delete id="deleteReturns">
+        delete from returns
+        where id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.BookMapper">
+    <insert id="save">
+        insert into book(name,description,publishDate,author,publisher,category,bookNo,cover,score,nums)
+        values (#{name},#{description},#{publishDate},#{author},#{publisher},#{category},#{bookNo},#{cover},#{score},#{nums})
+    </insert>
+    <update id="update">
+        update book
+        set name=#{name},description=#{description},publishDate=#{publishDate},author=#{author},publisher=#{publisher},category=#{category},bookNo=#{bookNo},cover=#{cover},updatetime=#{updatetime},score=#{score},nums=#{nums}
+        where id =#{id}
+    </update>
+    <update id="updateNum">
+        update book
+        set nums = nums + 1
+        where bookNo=#{bookNo}
+    </update>
+    <delete id="delete">
+        delete from book
+        where id=#{id}
+    </delete>
+    <select id="list" resultType="com.example.springboot.entity.Book">
+        select * from book order by id desc
+    </select>
+    <select id="listByConditions" resultType="com.example.springboot.entity.Book">
+        select * from book
+        <where>
+            <if test="name != null and name !=''">
+                name like concat('%',#{ name },'%')
+            </if>
+            <if test="bookNo != null and bookNo !=''">
+                bookNo like concat('%',#{bookNo},'%')
+            </if>
+
+        </where>
+        order by id desc
+    </select>
+    <select id="getById" resultType="com.example.springboot.entity.Book">
+        select *
+        from book
+        where id=#{id}
+    </select>
+    <select id="getByNo" resultType="com.example.springboot.entity.Book">
+        select *
+        from book
+        where bookNo=#{bookNo}
+    </select>
+
+</mapper>
