@@ -6,6 +6,10 @@
 ![image](readmeImages/chart.png)
 
 #### 部分功能页面展示：
+##### *登录界面
+![image](readmeImages/login.png)
+##### *登录界面滑块验证
+![image](readmeImages/check.png)
 ##### *首页借还统计
 ![image](readmeImages/functions.png)
 ##### *借书添加
@@ -26,7 +30,7 @@
 ![image](readmeImages/userList.png)
 ##### *管理员列表
 ![image](readmeImages/adminList.png)
-图书分类列表
+##### *图书分类列表
 ![image](readmeImages/categoryList.png)
 
 
