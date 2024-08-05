@@ -21,15 +21,16 @@
                 </template>
             </el-table-column>
             <el-table-column prop="name" label="书名"></el-table-column>
-            <el-table-column prop="author" label="作者" width="80"></el-table-column>
-            <el-table-column prop="publisher" label="出版商" width="70"></el-table-column>
-            <el-table-column prop="publishDate" label="出版日期" width="70"></el-table-column>
+            <el-table-column prop="author" label="作者" ></el-table-column>
+            <el-table-column prop="publisher" label="出版商" ></el-table-column>
+            <el-table-column prop="publishDate" label="出版日期" ></el-table-column>
             <el-table-column prop="bookNo" label="图书编号"></el-table-column>
             <el-table-column prop="category" label="分类"></el-table-column>
             <el-table-column prop="nums" label="数量"></el-table-column>
             <el-table-column prop="score" label="借书积分"></el-table-column>
-            <el-table-column prop="description" label="内容简介" width="100"></el-table-column>
-
+            <el-table-column prop="description" label="内容简介"></el-table-column>
+            <el-table-column prop="createtime" label="创建时间"></el-table-column>
+            <el-table-column prop="updatetime" label="更新时间"></el-table-column>
 
             <el-table-column label="操作" width="200px">
                 <template v-slot="scope">
@@ -90,10 +91,6 @@ export default {
     },
     methods: {
         load() {
-            // fetch('http://localhost:9090/user/list').then(res=>res.json()).then(res=>{
-            //     console.log(res)
-            //     this.tableData=res
-            // })
             request.get('/book/page', {
                 params: this.params
             }).then(res => {

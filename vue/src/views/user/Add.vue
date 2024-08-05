@@ -1,7 +1,7 @@
 <template>
     <div style="width: 100%">
         <div style="padding: 0 20px">
-            <h3>新增用户</h3>
+            <h3>新增会员</h3>
         </div>
         <el-form :inline="true" :model="form" :rules="rules" ref="ruleForm" label-width="100px">
             <el-form-item label="卡号">
@@ -20,9 +20,6 @@
             <el-form-item label="地址" prop="address">
                 <el-input v-model="form.address" placeholder="请输入地址"></el-input>
             </el-form-item>
-<!--            <el-form-item label="用户名">-->
-<!--                <el-input v-model="form.username" placeholder="请输入用户名"></el-input>-->
-<!--            </el-form-item>-->
 
             <el-form-item label="联系方式" prop="phone">
                 <el-input v-model="form.phone" placeholder="请输入联系方式"></el-input>
@@ -31,7 +28,6 @@
 
         <div style="text-align: center;margin-top: 40px">
             <el-button type="primary" @click="save" size="medium">提交</el-button>
-            <!--<el-button type="danger">取消</el-button>-->
         </div>
     </div>
 

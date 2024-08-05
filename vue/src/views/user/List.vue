@@ -11,11 +11,10 @@
 
         <el-table :data="tableData" stripe>
             <el-table-column prop="id" label="编号" width="50"></el-table-column>
-<!--            <el-table-column prop="username" label="用户名"></el-table-column>-->
             <el-table-column prop="cardID" label="卡号"></el-table-column>
-            <el-table-column prop="name" label="姓名" width="80"></el-table-column>
-            <el-table-column prop="age" label="年龄" width="70"></el-table-column>
-            <el-table-column prop="sex" label="性别" width="70"></el-table-column>
+            <el-table-column prop="name" label="姓名"></el-table-column>
+            <el-table-column prop="age" label="年龄"></el-table-column>
+            <el-table-column prop="sex" label="性别" ></el-table-column>
             <el-table-column prop="address" label="地址"></el-table-column>
             <el-table-column prop="phone" label="联系方式"></el-table-column>
             <el-table-column prop="account" label="账户积分"></el-table-column>

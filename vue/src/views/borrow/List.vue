@@ -15,18 +15,18 @@
 
 
         <el-table :data="tableData" stripe>
-            <el-table-column prop="id" label="编号" width="50"></el-table-column>
-            <el-table-column prop="bookName" label="书名" width="90"></el-table-column>
-            <el-table-column prop="bookNo" label="图书编号" width="120"></el-table-column>
-            <el-table-column prop="userName" label="用户姓名" width="70"></el-table-column>
-            <el-table-column prop="userId" label="用户编号" width="130"></el-table-column>
-            <el-table-column prop="userPhone" label="用户联系电话" width="110"></el-table-column>
-            <el-table-column prop="score" label="花费积分" width="70"></el-table-column>
-            <el-table-column prop="status" label="借出状态" width="70"></el-table-column>
-            <el-table-column prop="createtime" label="借书时间" width="90"></el-table-column>
-            <el-table-column prop="days" label="借出天数" width="70"></el-table-column>
-            <el-table-column prop="returnDate" label="归还日期" width="90"></el-table-column>
-            <el-table-column prop="note" label="过期提醒" width="90">
+            <el-table-column prop="id" label="编号" ></el-table-column>
+            <el-table-column prop="bookName" label="书名" ></el-table-column>
+            <el-table-column prop="bookNo" label="图书编号" ></el-table-column>
+            <el-table-column prop="userName" label="用户姓名" ></el-table-column>
+            <el-table-column prop="userId" label="用户编号" ></el-table-column>
+            <el-table-column prop="userPhone" label="用户联系电话" ></el-table-column>
+            <el-table-column prop="score" label="花费积分" ></el-table-column>
+            <el-table-column prop="status" label="借出状态" ></el-table-column>
+            <el-table-column prop="createtime" label="借书时间" ></el-table-column>
+            <el-table-column prop="days" label="借出天数"></el-table-column>
+            <el-table-column prop="returnDate" label="归还日期" ></el-table-column>
+            <el-table-column prop="note" label="过期提醒">
                 <template v-slot="scope">
                     <el-tag type="success" v-if="scope.row.note==='正常'">{{ scope.row.note }}</el-tag>
                     <el-tag type="primary" v-if="scope.row.note==='即将到期'">{{ scope.row.note }}</el-tag>
