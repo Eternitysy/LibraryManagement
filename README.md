@@ -29,7 +29,7 @@
 ![image](readmeImages/userList.png)
 * #### 管理员列表
 ![image](readmeImages/adminList.png)
-* 图书分类列表
+* #### 图书分类列表
 ![image](readmeImages/categoryList.png)
 
 
