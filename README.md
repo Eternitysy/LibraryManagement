@@ -1,5 +1,5 @@
 # LibraryManagement
-## 图书管理系统 (Vue+SpringBoot)
+### 图书管理系统 (Vue2 + SpringBoot + MyBatis + MySQL)
  
 ### 主要功能：
 ![image](readmeImages/functions.png)
