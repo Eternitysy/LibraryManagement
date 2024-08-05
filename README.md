@@ -3,7 +3,7 @@
 ### Vue+SpringBoot
  
 #### 主要功能：
-![image](readmeImages/chart.png)
+![image](readmeImages/functions.png)
 
 #### 部分功能页面展示：
 ##### *登录界面
@@ -11,7 +11,7 @@
 ##### *登录界面滑块验证
 ![image](readmeImages/check.png)
 ##### *首页借还统计
-![image](readmeImages/functions.png)
+![image](readmeImages/chart.png)
 ##### *借书添加
 ![image](readmeImages/borrowAdd.png)
 ##### *借书列表
