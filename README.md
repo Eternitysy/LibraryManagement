@@ -10,7 +10,7 @@
 * #### 登录界面滑块验证
 ![image](readmeImages/check.png)
 * #### 首页借还统计
-![image](readmeImages/chart.png)
+![image](readmeImages/img.png)
 * #### 借书添加
 ![image](readmeImages/borrowAdd.png)
 * #### 借书列表
